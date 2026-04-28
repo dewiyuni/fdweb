@@ -11,13 +11,22 @@
     <!-- Header / Navbar -->
     <nav>
       <div class="logo">Fdweb.id</div>
-      <ul class="nav-links">
+
+      <!-- Taruh di sini agar sejajar logo -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="nav-links" id="nav-links">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Layanan</a></li>
-        <li><a href="#">Portfolio</a></li>
+        <li><a href="#features">Layanan</a></li>
+        <li><a href="#portofolio">Portfolio</a></li>
         <li><a href="#">FAQ</a></li>
         <li><a href="#">Kontak</a></li>
       </ul>
+
       <button class="btn-primary">Mulai Konsultasi</button>
     </nav>
 
@@ -40,24 +49,18 @@
     </section>
 
     <!-- Kenapa Pilih Kami -->
-    <section class="features">
+    <section class="features" id="features">
       <h2>KENAPA PILIH FDWEB.ID?</h2>
       <div class="feature-grid">
         <div class="card">
           <div class="icon">⚡</div>
-          <h3>SUPER CEPAT (SAT-SET)</h3>
-          <p>
-            Website jadi dalam hitungan hari dengan performa loading yang
-            optimal.
-          </p>
+          <h3>User Frendly</h3>
+          <p>Navigasi ngga bikin bingung</p>
         </div>
         <div class="card">
           <div class="icon">👁️</div>
-          <h3>DESAIN EKSKLUSIF</h3>
-          <p>
-            Tampilan unik dan premium yang disesuaikan dengan identitas brand
-            Anda.
-          </p>
+          <h3>Fungsional</h3>
+          <p>Bukan cuma pajangan tapi harus kasih solusi buat usser.</p>
         </div>
         <div class="card">
           <div class="icon">📱</div>
@@ -69,23 +72,23 @@
       </div>
     </section>
     <!-- portofolio -->
-    <section class="portofolio">
+    <section class="portofolio" id="portofolio">
       <h2>Portofolio</h2>
       <div class="porto-grid">
         <div class="card">
           <div class="icon">⚡</div>
-          <h3>SUPER CEPAT (SAT-SET)</h3>
+          <h3>Game Kasir AUtis</h3>
           <p>
-            Website jadi dalam hitungan hari dengan performa loading yang
-            optimal.
+            salah satu proyek spesial yang pernah kami kerjakan: Game Kelma,
+            sebuah web-based game edukasi yang dirancang khusus untuk membantu
+            anak-anak dengan kebutuhan khusus (Autis).
           </p>
         </div>
         <div class="card">
           <div class="icon">👁️</div>
-          <h3>DESAIN EKSKLUSIF</h3>
+          <h3>Jaza Bakery</h3>
           <p>
-            Tampilan unik dan premium yang disesuaikan dengan identitas brand
-            Anda.
+            Website Landing Page UMKM Bakery dengan berbagai macam roti dan ku
           </p>
         </div>
         <div class="card">
@@ -107,5 +110,6 @@
         <div class="copy">© 2026 Fdweb.id</div>
       </div>
     </footer>
+    <script src="script/main.js"></script>
   </body>
 </html>

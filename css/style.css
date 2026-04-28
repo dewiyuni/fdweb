@@ -1,6 +1,8 @@
 /* style.css */
+html {
+  scroll-behavior: smooth;
+}
 
-/* Reset Dasar */
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +14,10 @@ body {
   background-color: #ffffff;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden; /* Mencegah layar goyang ke samping */
 }
 
-/* Header / Navbar */
+/* --- NAVIGASI DESKTOP --- */
 nav {
   display: flex;
   justify-content: space-between;
@@ -30,7 +33,7 @@ nav {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #0056b3; /* Biru Utama */
+  color: #0056b3;
 }
 
 .nav-links {
@@ -46,26 +49,24 @@ nav {
   transition: 0.3s;
 }
 
-.nav-links a:hover {
-  color: #0056b3;
+.hamburger {
+  display: none; /* Sembunyi di desktop */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
 }
 
-.btn-primary {
-  background-color: #0056b3;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
   transition: 0.3s;
 }
 
-.btn-primary:hover {
-  background-color: #004494;
-}
-
-/* Hero Section */
+/* --- HERO & GRID DESKTOP --- */
 .hero {
   display: flex;
   align-items: center;
@@ -78,76 +79,34 @@ nav {
   flex: 1;
   padding-right: 50px;
 }
-
 .hero-text h1 {
   font-size: 3rem;
   color: #002d5f;
   line-height: 1.2;
   margin-bottom: 20px;
 }
-
-.hero-text p {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.hero-btns {
-  display: flex;
-  gap: 15px;
-}
-
-.btn-dark {
-  background-color: #1a1a1a;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: #0056b3;
-  border: 2px solid #0056b3;
-  padding: 13px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
 .hero-image {
   flex: 1;
   display: flex;
   justify-content: center;
 }
-
 .hero-image img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* Fitur / Kenapa Pilih Kami */
-.features {
+.features,
+.portofolio {
   padding: 100px 8%;
   text-align: center;
 }
-
-.features h2 {
-  font-size: 2rem;
-  color: #002d5f;
-  margin-bottom: 50px;
-  position: relative;
-}
-
-.feature-grid {
+.feature-grid,
+.porto-grid {
   display: flex;
   gap: 30px;
+  margin-top: 50px;
 }
-
 .card {
   flex: 1;
   padding: 40px 30px;
@@ -157,86 +116,39 @@ nav {
   transition: 0.4s;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 86, 179, 0.1);
-  border-color: #0056b3;
-}
-
-.icon {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.card h3 {
-  margin-bottom: 15px;
-  color: #0056b3;
-}
-
-.card p {
-  color: #777;
-  font-size: 0.95rem;
-}
-/* portofolio */
-.portofolio {
-  padding: 100px 8%;
-  text-align: center;
-}
-
-.portofolio h2 {
-  font-size: 2rem;
-  color: #002d5f;
-  margin-bottom: 50px;
-  position: relative;
-}
-
-.porto-grid {
-  display: flex;
-  gap: 30px;
-}
-/* Footer */
-footer {
-  padding: 50px 8%;
-  background-color: #fff;
-  border-top: 1px solid #f0f0f0;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-/* Responsive (Mobile) */
+/* --- RESPONSIVE MOBILE (768px kebawah) --- */
+/* Update Bagian Responsive Mobile */
 @media (max-width: 768px) {
+  /* 1. Paksa Nav jadi satu baris (Kiri & Kanan) */
   nav {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 15px 5% !important;
+    height: 70px;
+  }
+
+  /* 2. Sembunyikan menu teks & tombol konsultasi */
+  .nav-links,
+  nav .btn-primary {
+    display: none !important;
+  }
+
+  /* 3. PAKSA Hamburger untuk Muncul */
+  .hamburger {
+    display: flex !important; /* Paksa muncul di HP */
+  }
+
+  /* 4. Tampilan Menu saat Hamburger diklik (Dropdown) */
+  .nav-links.active {
+    display: flex !important;
     flex-direction: column;
-    gap: 20px;
-  }
-  .nav-links {
-    gap: 15px;
-  }
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 40px;
-  }
-  .hero-text {
-    padding-right: 0;
-    margin-bottom: 40px;
-  }
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-  .hero-btns {
-    justify-content: center;
-  }
-  .feature-grid {
-    flex-direction: column;
-  }
-  .porto-grid {
-    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
   }
 }
