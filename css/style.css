@@ -298,39 +298,139 @@ header {
   padding: 100px 8%;
   text-align: center;
 }
+.features h2 {
+  font-size: 2.2rem;
+  color: #002d5f;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 .feature-grid,
 .porto-grid {
   display: flex;
+  justify-content: center;
   gap: 30px;
   margin-top: 50px;
 }
 .card {
   flex: 1;
-  padding: 40px 30px;
-  background: #fff;
+  max-width: 450px;
+  background: #ffffff;
   border: 1px solid #eef2f6;
-  border-radius: 15px;
-  transition: 0.4s;
-}
-/* =====   selengkapnyaa  ====== */
-.detail-text {
-  max-height: 70px; /* Batasi tinggi teks awal */
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
-}
-.read-more-btn {
-  background: none;
-  border: none;
-  color: #0052cc; /* Warna biru yang sama dengan tema Anda */
-  font-size: 0.9rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 5px 0;
-  margin-top: 10px;
-  display: inline-block;
-  transition: color 0.2s ease;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 86, 179, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
 }
 
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 86, 179, 0.08);
+  border-color: #d2e4ff;
+}
+
+.card .icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: #f0f6ff;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  color: #002d5f;
+  margin-bottom: 10px;
+}
+
+/* SINKRONISASI JAVASCRIPT: Mengatur area teks detail yang bisa menciut/melebar */
+.detail-text {
+  max-height: 45px; /* Menyembunyikan daftar fitur sebelum tombol diklik */
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  width: 100%;
+  text-align: left;
+}
+
+/* Kelas bantuan yang dipicu oleh JavaScript .expanded */
+.detail-text.expanded {
+  max-height: 500px !important; /* Batas atas tinggi maksimal saat dibuka */
+}
+
+.detail-text .tagline {
+  font-size: 1rem;
+  color: #0056b3;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.specs-group p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.detail-text .fitur-title {
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+/* Styling Daftar List (UL dan LI) */
+.detail-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detail-text ul li {
+  font-size: 0.95rem;
+  color: #555;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Membuat ikon centang kustom sebelum text daftar fitur */
+.detail-text ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00b4d8;
+  font-weight: bold;
+}
+
+/* DESAIN TOMBOL BACA SELENGKAPNYA */
+.read-more-btn {
+  margin-top: 25px;
+  background: none;
+  border: 1px solid #0056b3;
+  color: #0056b3;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 50px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background: #0056b3;
+  color: #ffffff;
+  transform: none;
+  box-shadow: none;
+}
 /* Efek saat tombol disentuh kursor */
 .read-more-btn:hover {
   color: #0040a3;
@@ -545,7 +645,7 @@ footer::after {
 
   .aboutme-image img {
     max-width: 100%; /* Gambar menyesuaikan lebar layar HP otomatis */
-    box-shadow: 0 10px 25px rgba(42, 145, 255, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
   }
 
   .aboutme-content {
@@ -596,11 +696,25 @@ footer::after {
   /* end aboutme*/
 
   /* 3. GRID LAYANAN & PORTFOLIO */
-  .feature-grid,
-  .porto-grid {
-    grid-template-columns: 1fr; /* Kolom grid menjadi 1 baris vertikal */
-    padding: 20px;
-    gap: 20px;
+  /* Taruh di dalam tanda kurung kurawal @media (max-width: 768px) */
+  .features {
+    padding: 60px 5%;
+  }
+
+  .features h2 {
+    font-size: 1.8rem;
+  }
+
+  .feature-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 35px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 30px 20px;
   }
 
   /* 4. FOOTER */
