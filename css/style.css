@@ -182,6 +182,114 @@ header {
 }
 /* ==============END HERO BTN====== */
 
+/* --- SECTION STUDI KASUS (Tema Agensi Web Modern) --- */
+.aboutme {
+  padding: 100px 8%;
+  background-color: #0b132b; /* Warna Navy Midnight premium */
+  color: #ffffff;
+}
+
+.aboutme-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.aboutme-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.aboutme-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 15px 35px rgba(0, 86, 179, 0.2); /* Efek binar biru halus */
+  border: 2px solid #1c2541;
+}
+
+.aboutme-content {
+  flex: 1;
+  text-align: left;
+}
+
+.aboutme-content .section-title {
+  font-size: 2.5rem;
+  color: #00b4d8; /* Akses warna Cyan kontras */
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.aboutme-content .description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #d1d5db;
+  margin-bottom: 25px;
+}
+
+.aboutme-content .description strong {
+  color: #00b4d8;
+}
+
+.aboutme-content .subsection-title {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Grid untuk 4 Kotak Fitur */
+.aboutme-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* Kotak Fitur Minimalis Agensi */
+.feature-box {
+  background-color: #1c2541;
+  padding: 22px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid #2a3457;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transisi lebih kenyal halus */
+}
+
+.feature-box:hover {
+  transform: translateY(-5px); /* Naik sedikit lebih tinggi agar tegas */
+  background-color: #222e50;
+  border-color: #00b4d8;
+  box-shadow: 0 6px 15px rgba(0, 180, 216, 0.1); /* Tambahan efek glow saat di-hover */
+}
+
+/* DIOPTIMASI: Penyelarasan letak ikon di dalam kotak transparan */
+.feature-box .feature-icon {
+  font-size: 1.5rem;
+  background: rgba(0, 180, 216, 0.1);
+  width: 45px; /* Dipatok lebar tetap agar berbentuk kotak sempurna */
+  height: 45px; /* Dipatok tinggi tetap agar berbentuk kotak sempurna */
+  border-radius: 10px;
+  display: flex;
+  align-items: center; /* Emoji pas di tengah secara vertikal */
+  justify-content: center; /* Emoji pas di tengah secara horizontal */
+}
+
+.feature-box p {
+  font-size: 0.95rem;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* end aboutme */
+
 /* end Hero */
 /* features, portofolio */
 
@@ -425,6 +533,68 @@ footer::after {
     margin-top: 25px;
     width: 100%;
   }
+  /* --- RESPONSIVE MOBILE UNTUK SECTION STUDI KASUS --- */
+  .aboutme {
+    padding: 60px 5%;
+  }
+
+  .aboutme-container {
+    flex-direction: column; /* Mengubah susunan gambar dan teks menjadi atas-bawah */
+    gap: 35px;
+  }
+
+  .aboutme-image img {
+    max-width: 100%; /* Gambar menyesuaikan lebar layar HP otomatis */
+    box-shadow: 0 10px 25px rgba(42, 145, 255, 0.15);
+  }
+
+  .aboutme-content {
+    text-align: left; /* Teks deskripsi tetap rapi rata kiri sesuai contoh gambar */
+  }
+
+  .aboutme-content .section-title {
+    font-size: 2rem; /* Ukuran judul dikecilkan sedikit agar muat di layar HP */
+    margin-bottom: 15px;
+  }
+
+  .aboutme-content .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .aboutme-content .subsection-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+  }
+
+  .aboutme-features-grid {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Tetap mempertahankan 2 kolom kotak berdampingan di HP */
+    gap: 12px; /* Jarak antar kotak dirapatkan sedikit agar pas di layar kecil */
+  }
+
+  .feature-box {
+    padding: 15px; /* Mengurangi padding dalam kotak agar teks tidak terpotong */
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  /* Penyesuaian ukuran kotak ikon di HP */
+  .feature-box .feature-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .feature-box p {
+    font-size: 0.85rem; /* Ukuran teks fitur dikecilkan agar muat dalam 2 kolom HP */
+    line-height: 1.3;
+  }
+  /* end aboutme*/
+
   /* 3. GRID LAYANAN & PORTFOLIO */
   .feature-grid,
   .porto-grid {
