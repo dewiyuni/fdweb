@@ -290,7 +290,6 @@ header {
 
 /* end aboutme */
 
-/* end Hero */
 /* features, portofolio */
 
 .features,
@@ -311,6 +310,54 @@ header {
   justify-content: center;
   gap: 30px;
   margin-top: 50px;
+}
+
+/* Memastikan kartu portofolio berjejer rapi */
+.portofolio .card {
+  flex: 1;
+  max-width: 400px;
+  padding: 0; /* Sengaja dikosongkan agar gambar mepet ke ujung atas kartu */
+  overflow: hidden; /* Memotong ujung gambar agar mengikuti border-radius kartu */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pembungkus Gambar Portofolio */
+.porto-image {
+  width: 100%;
+  height: 200px; /* Menentukan tinggi gambar yang seragam */
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.porto-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Trik utama: Gambar otomatis terpotong proporsional tanpa gepeng */
+  transition: transform 0.5s ease;
+}
+
+/* Efek Zoom Halus pada Gambar saat Kartu Disentuh Kursor */
+.portofolio .card:hover .porto-image img {
+  transform: scale(1.08);
+}
+
+/* Menata Teks di bawah Gambar (karena padding card diatur 0) */
+.portofolio .card h3 {
+  padding: 20px 20px 10px 20px;
+  text-align: left;
+  font-size: 1.3rem;
+  color: #002d5f;
+}
+
+.portofolio .card .detail-text {
+  padding: 0 20px;
+  text-align: left;
+}
+
+.portofolio .card .read-more-btn {
+  margin: 15px auto 20px auto;
+  align-self: center;
 }
 .card {
   flex: 1;
@@ -359,6 +406,7 @@ header {
   transition: max-height 0.4s ease-out;
   width: 100%;
   text-align: left;
+  display: block;
 }
 
 /* Kelas bantuan yang dipicu oleh JavaScript .expanded */
@@ -710,6 +758,25 @@ footer::after {
     align-items: center;
     gap: 25px;
     margin-top: 35px;
+  }
+
+  /* Taruh ini di dalam @media (max-width: 768px) */
+  .portofolio {
+    padding: 60px 5%;
+  }
+
+  .porto-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .portofolio .card {
+    width: 100%;
+  }
+
+  .porto-image {
+    height: 180px; /* Ketinggian gambar disesuaikan sedikit lebih pendek di HP */
   }
 
   .card {
