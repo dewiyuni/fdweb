@@ -49,3 +49,26 @@ window.onbeforeunload = () => {
     form.reset();
   }
 };
+
+// 4. Logika Pengiriman Formulir Otomatis ke WhatsApp
+const waForm = document.getElementById("wa-form");
+if (waForm) {
+  waForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Mencegah muat ulang halaman bawaan browser
+
+    const nama = document.getElementById("nama").value;
+    const paket = document.getElementById("paket").value;
+    const pesan = document.getElementById("pesan").value;
+
+    // Ganti dengan nomor WhatsApp aktif Anda (awali dengan kode negara 62)
+    const nomorWA = "6281234567890";
+
+    // Format susunan teks teks chat agar rapi terbaca
+    const teksChat = `Halo Fdweb.id,%0A%0ASaya ingin konsultasi pembuatan website.%0A%0A*Nama:* ${nama}%0A*Pilihan Paket:* ${paket}%0A*Detail Kebutuhan:* ${pesan}`;
+
+    // Buka tautan WhatsApp secara otomatis di tab baru
+    window.open(`https://wa.me{085865334840}?text=${teksChat}`, "_blank");
+
+    waForm.reset(); // Mengosongkan form kembali setelah dikirim
+  });
+}

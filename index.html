@@ -23,8 +23,8 @@
         <li><a href="#aboutme">About me</a></li>
         <li><a href="#features">Layanan</a></li>
         <li><a href="#portofolio">Portfolio</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Kontak</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#kontak">Kontak</a></li>
       </ul>
 
       <div class="header-spacer"></div>
@@ -227,6 +227,193 @@
       </div>
     </section>
     <!-- portofolio -->
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <p class="faq-subtitle">
+        Punya pertanyaan seputar layanan kami? Temukan jawabannya di sini.
+      </p>
+
+      <div class="faq-container">
+        <!-- Pertanyaan 1 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <h3>Berapa lama proses pembuatan website di Fdweb.id?</h3>
+          </div>
+          <div class="detail-text">
+            <p>
+              Proses pengerjaan bervariasi tergantung paket yang dipilih. Paket
+              <strong>Landing Page</strong> biasanya selesai dalam 2-3 hari
+              kerja, paket <strong>Company Profile</strong> sekitar 5-7 hari
+              kerja, sedangkan <strong>Toko Online</strong> membutuhkan waktu
+              7-14 hari kerja setelah seluruh data dan aset kami terima.
+            </p>
+          </div>
+          <button class="read-more-btn">Lihat Jawaban</button>
+        </div>
+
+        <!-- Pertanyaan 2 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <h3>Apakah saya bisa mengedit konten website sendiri nanti?</h3>
+          </div>
+          <div class="detail-text">
+            <p>
+              Tentu saja! Kami membangun website dengan sistem yang ramah
+              pengguna (user-friendly). Anda akan mendapatkan akses dasbor admin
+              penuh untuk mengubah teks, mengganti gambar, atau menambah produk
+              baru. Kami juga menyediakan
+              <strong>video panduan gratis</strong> untuk memudahkan Anda
+              mengelolanya.
+            </p>
+          </div>
+          <button class="read-more-btn">Lihat Jawaban</button>
+        </div>
+
+        <!-- Pertanyaan 3 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <h3>Apakah sudah termasuk domain, hosting, dan maintenance?</h3>
+          </div>
+          <div class="detail-text">
+            <p>
+              Ya, seluruh paket yang kami sediakan sudah
+              <strong
+                >gratis Domain (.com/.id) dan Hosting berkecepatan tinggi selama
+                1 tahun penuh</strong
+              >. Kami juga memberikan garansi perbaikan jika terjadi error atau
+              kendala teknis pada sistem website Anda selama masa kontrak aktif.
+            </p>
+          </div>
+          <button class="read-more-btn">Lihat Jawaban</button>
+        </div>
+
+        <!-- Pertanyaan 4 -->
+        <div class="faq-card">
+          <div class="faq-question">
+            <h3>Bagaimana cara memulai konsultasi atau pemesanan?</h3>
+          </div>
+          <div class="detail-text">
+            <p>
+              Sangat mudah! Anda hanya perlu menekan tombol
+              <strong>"Mulai Konsultasi"</strong> yang ada di website ini. Anda
+              akan langsung terhubung ke WhatsApp tim desainer kami untuk
+              mendiskusikan kebutuhan bisnis, konsep desain, hingga negosiasi
+              harga paket yang paling cocok.
+            </p>
+          </div>
+          <button class="read-more-btn">Lihat Jawaban</button>
+        </div>
+      </div>
+    </section>
+    <!-- end FAQ Section -->
+
+    <!-- Kontak Section -->
+    <section class="contact-section" id="kontak">
+      <div class="contact-container">
+        <!-- Kolom Kiri: Formulir Kirim Pesan ke WA -->
+        <div class="contact-form-box">
+          <h2>Kirim Pesan</h2>
+          <p>
+            Isi formulir di bawah ini untuk langsung terhubung dengan tim
+            desainer kami via WhatsApp.
+          </p>
+
+          <form id="wa-form">
+            <div class="input-group">
+              <label for="nama">Nama Lengkap</label>
+              <input
+                type="text"
+                id="nama"
+                placeholder="Contoh: Budi Santoso"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="paket">Pilihan Paket</label>
+              <select id="paket" required>
+                <option value="" disabled selected>
+                  -- Pilih Paket Website --
+                </option>
+                <option value="Landing Page">
+                  Landing Page (Solusi Jualan Laris)
+                </option>
+                <option value="Company Profile">
+                  Company Profile (Kepercayaan Bisnis)
+                </option>
+                <option value="Toko Online">
+                  Toko Online (E-Commerce Otomatis)
+                </option>
+                <option value="Kustom Desain">Kustom / Konsultasi Dulu</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="pesan">Detail Kebutuhan Bisnis Anda</label>
+              <textarea
+                id="pesan"
+                rows="4"
+                placeholder="Ceritakan sedikit tentang bisnis Anda..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%">
+              Kirim via WhatsApp 🚀
+            </button>
+          </form>
+        </div>
+
+        <!-- Kolom Kanan: Info Sosial Media -->
+        <div class="contact-info-box">
+          <span class="contact-subtitle">HUBUNGI KAMI</span>
+          <h2>Mari Mulai Proyek Anda Besama Fdweb.id</h2>
+          <p class="contact-desc">
+            Punya pertanyaan khusus atau ingin berdiskusi santai terlebih
+            dahulu? Kami selalu terbuka untuk mengobrol seputar strategi digital
+            terbaik untuk bisnis Anda.
+          </p>
+
+          <!-- Tombol Sosial Media Utama -->
+          <div class="social-channels">
+            <!-- Tautan WhatsApp Chat -->
+            <a
+              href="https://wa.me{085865334840}"
+              target="_blank"
+              class="channel-card wa"
+            >
+              <div class="channel-icon">💬</div>
+              <div class="channel-text">
+                <h4>WhatsApp Chat</h4>
+                <p>Fast Response (08.00 - 21.00)</p>
+              </div>
+            </a>
+
+            <!-- Tautan Email Resmi -->
+            <a href="mailto:support@fdweb.id" class="channel-card email">
+              <div class="channel-icon">✉️</div>
+              <div class="channel-text">
+                <h4>Email Resmi</h4>
+                <p>fdweb26@gmail.com</p>
+              </div>
+            </a>
+
+            <!-- Tautan Instagram -->
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="channel-card ig"
+            >
+              <div class="channel-icon">📸</div>
+              <div class="channel-text">
+                <h4>Instagram</h4>
+                <p>@fdweb.id</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end Kontak Section -->
 
     <!-- footer -->
     <footer>

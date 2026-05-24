@@ -502,6 +502,310 @@ header {
 }
 /* }end features, portofolio */
 
+/* --- FAQ SECTION (DESKTOP) --- */
+.faq {
+  padding: 100px 8%;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.faq h2 {
+  font-size: 2.5rem;
+  color: #002d5f;
+  margin-bottom: 10px;
+}
+
+.faq-subtitle {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+.faq-container {
+  max-width: 800px; /* Membuat area FAQ terpusat di tengah layar */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-card {
+  background: #f8fafd; /* Latar belakang abu-biru super lembut */
+  border: 1px solid #eef2f6;
+  border-radius: 12px;
+  padding: 25px 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.faq-card:hover {
+  border-color: #0056b3;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.03);
+}
+
+.faq-question h3 {
+  font-size: 1.2rem;
+  color: #002d5f;
+  margin-bottom: 0;
+}
+
+/* Modifikasi ruang untuk teks jawaban */
+.faq-card .detail-text p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  padding-top: 15px; /* Memberikan jarak atas saat jawaban terbuka */
+}
+
+.faq-card .detail-text p strong {
+  color: #0056b3;
+}
+
+/* Merapikan letak tombol toggle jawaban */
+.faq-card .read-more-btn {
+  margin-top: 15px;
+  background: none;
+  border: none;
+  color: #0056b3;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.faq-card .read-more-btn:hover {
+  color: #004085;
+  text-decoration: underline;
+  background: none;
+}
+@media (max-width: 768px) {
+  .faq {
+    padding: 60px 5%;
+    scroll-margin-top: 70px; /* Supaya saat diklik dari menu tidak terpotong header sticky */
+  }
+
+  .faq h2 {
+    font-size: 2rem;
+  }
+
+  .faq-subtitle {
+    font-size: 1rem;
+    margin-bottom: 35px;
+  }
+
+  .faq-card {
+    padding: 20px;
+  }
+
+  .faq-question h3 {
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+
+  .faq-card .detail-text p {
+    font-size: 0.95rem;
+  }
+}
+/* end FAQ */
+
+/* --- CONTACT SECTION (DESKTOP) --- */
+.contact-section {
+  padding: 100px 8%;
+  background-color: #f8fafd; /* Latar belakang soft blue */
+}
+
+.contact-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Kotak Formulir Kiri */
+.contact-form-box {
+  flex: 1;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #eef2f6;
+  box-shadow: 0 10px 30px rgba(0, 86, 179, 0.02);
+  text-align: left;
+}
+
+.contact-form-box h2 {
+  font-size: 1.8rem;
+  color: #002d5f;
+  margin-bottom: 10px;
+}
+
+.contact-form-box p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #002d5f;
+  margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d2e4ff;
+  border-radius: 8px;
+  background-color: #fcfdfe;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: #0056b3;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
+}
+
+/* Kotak Informasi Kanan */
+.contact-info-box {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0056b3;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.contact-info-box h2 {
+  font-size: 2.5rem;
+  color: #002d5f;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.contact-desc {
+  color: #555;
+  font-size: 1.05rem;
+  margin-bottom: 35px;
+}
+
+/* Daftar Kartu Media Sosial */
+.social-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.channel-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.channel-icon {
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modifikasi Warna Unik per Media Sosial */
+.wa .channel-icon {
+  background: rgba(37, 211, 102, 0.1);
+}
+.email .channel-icon {
+  background: rgba(0, 86, 179, 0.1);
+}
+.ig .channel-icon {
+  background: rgba(225, 48, 108, 0.1);
+}
+
+.channel-text h4 {
+  font-size: 1rem;
+  color: #002d5f;
+  margin-bottom: 2px;
+}
+
+.channel-text p {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.channel-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 86, 179, 0.05);
+}
+.wa:hover {
+  border-color: #25d366;
+}
+.email:hover {
+  border-color: #0056b3;
+}
+.ig:hover {
+  border-color: #e1306c;
+}
+@media (max-width: 768px) {
+  /* Taruh ini di dalam @media (max-width: 768px) Anda */
+  .contact-section {
+    padding: 60px 5%;
+    scroll-margin-top: 70px;
+  }
+
+  .contact-container {
+    flex-direction: column-reverse; /* Info Sosmed naik ke atas, form di bawahnya */
+    gap: 40px;
+  }
+
+  .contact-form-box {
+    padding: 25px 20px;
+  }
+
+  .contact-info-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+}
+
 /* footer */
 footer {
   background: linear-gradient(135deg, #0f172a, #1e293b);
