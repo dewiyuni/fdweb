@@ -602,7 +602,10 @@ footer::after {
 @media (max-width: 768px) {
   /* 1. HEADER & NAVBAR */
   header {
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
     padding: 15px 20px;
   }
 
@@ -683,7 +686,8 @@ footer::after {
   }
   /* --- RESPONSIVE MOBILE UNTUK SECTION STUDI KASUS --- */
   .aboutme {
-    padding: 60px 5%;
+    padding: 60px 5% 60px 5%;
+    scroll-margin-top: 70px;
   }
 
   .aboutme-container {
@@ -746,7 +750,8 @@ footer::after {
   /* 3. GRID LAYANAN & PORTFOLIO */
   /* Taruh di dalam tanda kurung kurawal @media (max-width: 768px) */
   .features {
-    padding: 60px 5%;
+    padding: 60px 5% 60px 5%;
+    scroll-margin-top: 70px;
   }
 
   .features h2 {
@@ -762,7 +767,8 @@ footer::after {
 
   /* Taruh ini di dalam @media (max-width: 768px) */
   .portofolio {
-    padding: 60px 5%;
+    padding: 60px 5% 60px 5%;
+    scroll-margin-top: 70px;
   }
 
   .porto-grid {
