@@ -185,30 +185,37 @@ header {
 /* --- SECTION STUDI KASUS (Tema Agensi Web Modern) --- */
 .aboutme {
   padding: 100px 8%;
-  background-color: #0b132b; /* Warna Navy Midnight premium */
+  background-color: #0b132b;
   color: #ffffff;
 }
 
 .aboutme-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 50px;
+  position: relative; /* WAJIB: Menjadi jangkar batas gerak untuk element sticky di dalamnya */
 }
 
 .aboutme-image {
   flex: 1;
   display: flex;
   justify-content: center;
+
+  /* --- KODE BARU UNTUK EFEK BERGERAK/STICKY --- */
+  position: sticky; /* Membuat elemen melayang saat di-scroll */
+  top: 120px; /* Jarak logo dari batas atas layar saat melayang (sesuaikan dengan tinggi navbar Anda) */
+  align-self: flex-start; /* Memastikan elemen memulai posisinya dari atas container */
 }
 
 .aboutme-image img {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
   height: auto;
-  border-radius: 15px;
-  object-fit: cover;
-  box-shadow: 0 15px 35px rgba(0, 86, 179, 0.2); /* Efek binar biru halus */
+  border-radius: 50%;
+  object-fit: contain;
+  box-shadow: 0 15px 35px rgba(0, 86, 179, 0.2);
   border: 2px solid #1c2541;
 }
 
