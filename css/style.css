@@ -479,11 +479,6 @@ header {
   transform: none;
   box-shadow: none;
 }
-/* Efek saat tombol disentuh kursor */
-.read-more-btn:hover {
-  color: #0040a3;
-  text-decoration: underline; /* Memberi garis bawah tipis */
-}
 
 /* Garis hamburger default */
 .hamburger span {
