@@ -34,9 +34,6 @@ header {
   font-weight: bold;
   color: #0056b3;
 }
-.header-spacer {
-  width: 120px;
-}
 
 .nav-links {
   display: flex;
@@ -50,7 +47,12 @@ header {
   font-weight: 500;
   transition: 0.3s;
 }
-
+.nav-links a.active {
+  color: #0056b3 !important;
+  font-weight: 700;
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 5px;
+}
 .hamburger {
   display: none; /* Sembunyi di desktop */
   flex-direction: column;
@@ -180,6 +182,18 @@ header {
   background-color: #f0f5ff; /* Biru sangat muda saat di-hover */
   transform: translateY(-2px);
 }
+@media (max-width: 769px) {
+  .hero {
+    flex-direction: column; /* Membuat gambar dan teks bertumpuk ke bawah */
+    text-align: center; /* Mengubah semua teks di dalam hero menjadi rata tengah */
+    padding: 40px 8%; /* Menyesuaikan padding agar tidak terlalu renggang di HP */
+  }
+
+  .hero-text {
+    padding-right: 0; /* KUNCI: Menghapus ganjalan 50px agar posisi teks benar-benar di tengah */
+    margin-bottom: 30px; /* Memberi jarak jika di bawahnya ada gambar/elemen lain */
+  }
+}
 /* ==============END HERO BTN====== */
 
 /* --- SECTION STUDI KASUS (Tema Agensi Web Modern) --- */
@@ -219,6 +233,25 @@ header {
   border: 2px solid #1c2541;
 }
 
+@media (max-width: 769px) {
+  /* TAMBAHAN KODE BARU: Agar gambar dan teks bertumpuk ke bawah saat di HP */
+  .aboutme-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .aboutme-image {
+    position: static; /* Membuat elemen melayang saat di-scroll */
+    align-self: auto; /* Memastikan elemen memulai posisinya dari atas container */
+  }
+
+  .aboutme-image img {
+    max-width: 200px; /* Di mobile cukup tulis yang berubah saja */
+    width: 75%;
+  }
+}
+
 .aboutme-content {
   flex: 1;
   text-align: left;
@@ -236,6 +269,7 @@ header {
   line-height: 1.7;
   color: #d1d5db;
   margin-bottom: 25px;
+  text-align: justify;
 }
 
 .aboutme-content .description strong {
@@ -583,7 +617,7 @@ header {
   text-decoration: underline;
   background: none;
 }
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .faq {
     padding: 60px 5%;
     scroll-margin-top: 70px; /* Supaya saat diklik dari menu tidak terpotong header sticky */

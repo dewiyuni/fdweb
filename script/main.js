@@ -1,22 +1,56 @@
+// --- 1. DEKLARASI VARIABEL UTAMA ---
 const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("nav-links");
+const navContainer = document.getElementById("nav-links"); // Mengganti nama agar tidak tertukar
+const navLinks = document.querySelectorAll(".nav-links a"); // Mengambil semua link <a> untuk scroll spy & click
+const sections = document.querySelectorAll("section[id]");
 
-// 1. Hamburger Menu & Animasi X
-if (hamburger && navLinks) {
+// --- 2. HAMBURGER MENU & ANIMASI X ---
+if (hamburger && navContainer) {
   hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
+    navContainer.classList.toggle("active");
     hamburger.classList.toggle("open");
   });
 
-  document.querySelectorAll(".nav-links a").forEach((link) => {
+  // Klik menu apa saja langsung menutup panel mobile
+  navLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
+      navContainer.classList.remove("active");
       hamburger.classList.remove("open");
     });
   });
 }
 
-// 2. Fitur Baca Selengkapnya (Sudah Digabung & Otomatis Sembunyi Jika Teks Pendek)
+// --- 3. FITUR SOROTAN MENU SAAT SCROLL (INTERSECTION OBSERVER) ---
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      // Jika section masuk ke layar browser sebesar minimal 40%
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+
+        // PERBAIKAN: Sekarang berjalan lancar karena navLinks berupa QuerySelectorAll
+        navLinks.forEach((link) => link.classList.remove("active"));
+
+        // Tambahkan class 'active' ke menu yang cocok dengan id section saat ini
+        const activeLink = document.querySelector(
+          `.nav-links a[href="#${id}"]`,
+        );
+        if (activeLink) {
+          activeLink.classList.add("active");
+        }
+      }
+    });
+  },
+  {
+    // Mengatur area deteksi agar pas di tengah layar saat di-scroll
+    rootMargin: "-30% 0px -50% 0px",
+  },
+);
+
+// Daftarkan semua section ke sistem pemantau scroll
+sections.forEach((section) => observer.observe(section));
+
+// --- 4. FITUR BACA SELENGKAPNYA ---
 const readMoreButtons = document.querySelectorAll(".read-more-btn");
 
 readMoreButtons.forEach((btn) => {
@@ -43,14 +77,14 @@ readMoreButtons.forEach((btn) => {
   }
 });
 
-// 3. Reset Form Saat Halaman Direfresh
+// --- 5. RESET FORM SAAT HALAMAN DIREFRESH ---
 window.onbeforeunload = () => {
   for (const form of document.getElementsByTagName("form")) {
     form.reset();
   }
 };
 
-// 4. Logika Pengiriman Formulir Otomatis ke WhatsApp
+// --- 6. LOGIKA PENGIRIMAN FORMULIR KE WHATSAPP ---
 const waForm = document.getElementById("wa-form");
 if (waForm) {
   waForm.addEventListener("submit", (e) => {
@@ -60,14 +94,14 @@ if (waForm) {
     const paket = document.getElementById("paket").value;
     const pesan = document.getElementById("pesan").value;
 
-    // Ganti dengan nomor WhatsApp aktif Anda (awali dengan kode negara 62)
-    const nomorWA = "6281234567890";
+    // PERBAIKAN: Format nomor dan link wa.me diubah menjadi standar internasional yang benar
+    const nomorWA = "6285865334840";
 
     // Format susunan teks teks chat agar rapi terbaca
     const teksChat = `Halo Fdweb.id,%0A%0ASaya ingin konsultasi pembuatan website.%0A%0A*Nama:* ${nama}%0A*Pilihan Paket:* ${paket}%0A*Detail Kebutuhan:* ${pesan}`;
 
     // Buka tautan WhatsApp secara otomatis di tab baru
-    window.open(`https://wa.me{085865334840}?text=${teksChat}`, "_blank");
+    window.open(`https://wa.me{nomorWA}?text=${teksChat}`, "_blank");
 
     waForm.reset(); // Mengosongkan form kembali setelah dikirim
   });
