@@ -393,7 +393,7 @@ header {
 
 .portofolio .card .detail-text {
   padding: 0 20px;
-  text-align: left;
+  text-align: justify;
 }
 
 .portofolio .card .read-more-btn {
