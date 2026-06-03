@@ -250,6 +250,11 @@ header {
     gap: 30px;
   }
 
+  .hero-text {
+    /* PERBAIKAN 1: Wajib hilangkan ganjalan padding kanan desktop agar teks benar-benar di as tengah */
+    padding-right: 0;
+  }
+
   .hero-text h1 {
     font-size: 1.8rem; /* Perkecil ukuran judul agar muat di HP */
   }
@@ -258,15 +263,23 @@ header {
     width: 100%;
     max-width: 350px; /* Batasi agar gambar tidak terlalu besar */
   }
+
   .hero-btns {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* PERBAIKAN 2: Memaksa tombol-tombol di dalamnya berbaris pas di tengah */
     gap: 12px;
     margin-top: 25px;
     width: 100%;
   }
+
+  /* PERBAIKAN 3: Memastikan tombol di dalam hero-btns tidak meluber aneh */
+  .hero-btns .btn {
+    width: 100%;
+    max-width: 280px; /* Batasi lebar tombol di HP agar estetis dan pas di tengah */
+  }
 }
+
 /* =================END HERO BTN================== */
 
 /* --- SECTION STUDI KASUS (Tema Agensi Web Modern) --- */
