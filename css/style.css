@@ -69,9 +69,6 @@ header {
   border-radius: 2px;
   transition: 0.3s;
 }
-/* end Header */
-
-/* Hero */
 
 .logo {
   font-size: 1.5rem;
@@ -109,7 +106,70 @@ header {
   transition: 0.3s;
 }
 
-/* --- HERO & GRID DESKTOP --- */
+@media (max-width: 768px) {
+  /* 1. HEADER & NAVBAR */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    padding: 15px 20px;
+  }
+
+  /* Sembunyikan tombol konsultasi bawaan di mobile jika terlalu sempit */
+  header .btn-primary {
+    display: none;
+  }
+
+  /* Tampilkan & bentuk tombol hamburger (3 garis) */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 100%;
+    background-color: #333; /* Ubah warna garis sesuai tema */
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  /* Ubah menu navigasi menjadi vertikal dan sembunyikan ke atas */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 15px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+  }
+  .header-spacer {
+    display: none;
+  }
+  /* Class aktif yang akan dipicu oleh JavaScript saat hamburger diklik */
+  .nav-links.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+/* ==================end Header========================= */
+
+/* ======================Hero=========================== */
 .hero {
   display: flex;
   align-items: center;
@@ -182,19 +242,32 @@ header {
   background-color: #f0f5ff; /* Biru sangat muda saat di-hover */
   transform: translateY(-2px);
 }
-@media (max-width: 769px) {
+@media (max-width: 768px) {
   .hero {
-    flex-direction: column; /* Membuat gambar dan teks bertumpuk ke bawah */
-    text-align: center; /* Mengubah semua teks di dalam hero menjadi rata tengah */
-    padding: 40px 8%; /* Menyesuaikan padding agar tidak terlalu renggang di HP */
+    flex-direction: column-reverse; /* Gambar pindah ke atas teks di HP */
+    text-align: center;
+    padding: 40px 20px;
+    gap: 30px;
   }
 
-  .hero-text {
-    padding-right: 0; /* KUNCI: Menghapus ganjalan 50px agar posisi teks benar-benar di tengah */
-    margin-bottom: 30px; /* Memberi jarak jika di bawahnya ada gambar/elemen lain */
+  .hero-text h1 {
+    font-size: 1.8rem; /* Perkecil ukuran judul agar muat di HP */
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 350px; /* Batasi agar gambar tidak terlalu besar */
+  }
+  .hero-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+    width: 100%;
   }
 }
-/* ==============END HERO BTN====== */
+/* =================END HERO BTN================== */
 
 /* --- SECTION STUDI KASUS (Tema Agensi Web Modern) --- */
 .aboutme {
@@ -290,6 +363,27 @@ header {
   gap: 15px;
 }
 
+/* end aboutme */
+
+/* features, portofolio */
+.features {
+  padding: 100px 8%;
+  text-align: center;
+}
+.features h2 {
+  font-size: 2.2rem;
+  color: #002d5f;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.feature-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+}
+
 /* Kotak Fitur Minimalis Agensi */
 .feature-box {
   background-color: #1c2541;
@@ -329,23 +423,13 @@ header {
   line-height: 1.4;
 }
 
-/* end aboutme */
-
-/* features, portofolio */
-
-.features,
+/* Portofolio */
+/* --- SECTION PORTOFOLIO --- */
 .portofolio {
   padding: 100px 8%;
   text-align: center;
 }
-.features h2 {
-  font-size: 2.2rem;
-  color: #002d5f;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.feature-grid,
+
 .porto-grid {
   display: flex;
   justify-content: center;
@@ -357,33 +441,84 @@ header {
 .portofolio .card {
   flex: 1;
   max-width: 400px;
-  padding: 0; /* Sengaja dikosongkan agar gambar mepet ke ujung atas kartu */
-  overflow: hidden; /* Memotong ujung gambar agar mengikuti border-radius kartu */
+  padding: 0; /* Gambar mepet ke ujung atas kartu */
+  overflow: hidden; /* Memotong ujung media agar ikut melengkung sesuai kartu */
   display: flex;
   flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 86, 179, 0.03);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Pembungkus Gambar Portofolio */
+.portofolio .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 86, 179, 0.08);
+  border-color: #d2e4ff;
+}
+
+/* KUNCI UTAMA: Pembungkus Video/Gambar Terpadu */
 .porto-image {
+  position: relative; /* Jangkar wajib untuk tombol absolut .video-control-btn */
   width: 100%;
-  height: 200px; /* Menentukan tinggi gambar yang seragam */
-  overflow: hidden;
-  background-color: #f0f0f0;
+  max-width: 400px;
+  min-height: 150px;
+  margin: 0 auto;
+  overflow: hidden; /* Memotong luapan video/gambar saat membesar (zoom) */
+  border-radius: 12px 12px 0 0; /* Melengkung di atas, rata di bawah menempel teks */
+  background-color: #f8fafc;
 }
 
-.porto-image img {
+/* Mengatur sifat Gambar DAN Video di dalam pembungkus */
+.porto-image img,
+.porto-image .portfolio-video {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Trik utama: Gambar otomatis terpotong proporsional tanpa gepeng */
-  transition: transform 0.5s ease;
+  height: auto; /* Mengikuti tinggi proporsional file asli agar tidak terpotong */
+  display: block;
+  object-fit: contain; /* Gambar/video utuh dan tidak ter-crop */
+  box-shadow: 0 15px 35px rgba(0, 86, 179, 0.1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Gerakan zoom kenyal halus */
 }
 
-/* Efek Zoom Halus pada Gambar saat Kartu Disentuh Kursor */
-.portofolio .card:hover .porto-image img {
-  transform: scale(1.08);
+/* Efek Zoom Bersamaan saat Kartu Disentuh Kursor */
+.portofolio .card:hover .porto-image img,
+.portofolio .card:hover .porto-image .portfolio-video {
+  transform: scale(1.05); /* Membesar sedikit secara elegan */
 }
 
-/* Menata Teks di bawah Gambar (karena padding card diatur 0) */
+/* Style Tombol Play/Pause Pojok Kecil Absolut */
+.video-control-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.7); /* Background gelap transparan */
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%; /* Bulat sempurna */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+/* Efek Hover Tombol */
+.video-control-btn:hover {
+  background: rgba(
+    0,
+    180,
+    216,
+    0.9
+  ); /* Berubah warna cyan tema agensi saat disentuh */
+  transform: scale(1.1);
+}
+
+/* Menata Teks di bawah Gambar */
 .portofolio .card h3 {
   padding: 20px 20px 10px 20px;
   text-align: left;
@@ -400,6 +535,16 @@ header {
   margin: 15px auto 20px auto;
   align-self: center;
 }
+
+/* Responsivitas Layar HP (Mobile) */
+@media (max-width: 769px) {
+  .porto-grid {
+    flex-direction: column; /* Kartu otomatis bertumpuk ke bawah saat di HP */
+    align-items: center;
+    gap: 25px;
+  }
+}
+
 .card {
   flex: 1;
   max-width: 450px;
@@ -904,35 +1049,22 @@ footer::after {
   gap: 20px;
 }
 
-/* logo */
-.footer-logo {
-  font-size: 2rem;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -1px;
-}
-
-/* text footer */
-.socials,
-.contact,
-.copy {
-  color: #cbd5e1;
-  font-size: 1rem;
-  transition: 0.3s ease;
-}
-
-/* hover */
-.socials:hover,
-.contact:hover {
-  color: #60a5fa;
-  transform: translateY(-2px);
-  cursor: pointer;
-}
-
 /* copyright */
 .copy {
-  opacity: 0.7;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  opacity: 0.6;
   text-align: center;
+  position: relative;
+  z-index: 2;
+
+  /* KUNCI: Memaksa elemen memenuhi seluruh lebar baris bawah */
+  width: 100%;
+  display: block;
+
+  /* Tambahan garis pembatas tipis di atas copyright (Opsional agar lebih elegan) */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
 }
 
 /* end footer */
@@ -942,66 +1074,6 @@ footer::after {
 ========================= */
 
 @media (max-width: 768px) {
-  /* 1. HEADER & NAVBAR */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #fff;
-    padding: 15px 20px;
-  }
-
-  /* Sembunyikan tombol konsultasi bawaan di mobile jika terlalu sempit */
-  header .btn-primary {
-    display: none;
-  }
-
-  /* Tampilkan & bentuk tombol hamburger (3 garis) */
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 25px;
-    height: 20px;
-    cursor: pointer;
-  }
-
-  .hamburger span {
-    height: 3px;
-    width: 100%;
-    background-color: #333; /* Ubah warna garis sesuai tema */
-    border-radius: 10px;
-    transition: 0.3s;
-  }
-
-  /* Ubah menu navigasi menjadi vertikal dan sembunyikan ke atas */
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    gap: 15px;
-    text-align: center;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
-    transition: 0.3s ease;
-  }
-  .header-spacer {
-    display: none;
-  }
-  /* Class aktif yang akan dipicu oleh JavaScript saat hamburger diklik */
-  .nav-links.active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
   /* 2. HERO SECTION */
   .hero {
     flex-direction: column-reverse; /* Gambar pindah ke atas teks di HP */

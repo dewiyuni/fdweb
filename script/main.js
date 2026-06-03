@@ -106,3 +106,28 @@ if (waForm) {
     waForm.reset(); // Mengosongkan form kembali setelah dikirim
   });
 }
+// --- 7. LOGIKA TOMBOL PLAY / PAUSE VIDEO PORTOFOLIO ---
+const controlButtons = document.querySelectorAll(".video-control-btn");
+
+controlButtons.forEach((btn) => {
+  // Ambil elemen video yang berada tepat sebelum posisi tombol ini
+  const video = btn.previousElementSibling;
+
+  if (video && video.tagName === "VIDEO") {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Mencegah klik tombol mengacaukan hover kartu
+
+      // Jika video sedang berhenti/pause, maka putar videonya
+      if (video.paused) {
+        video.play();
+        btn.textContent = "⏸"; // Ubah ikon jadi Pause (Garis dua)
+        btn.style.background = "rgba(0, 180, 216, 0.8)"; // Beri warna cyan tanda video jalan
+      } else {
+        // Jika video sedang berjalan, maka hentikan videonya
+        video.pause();
+        btn.textContent = "▶"; // Kembalikan ikon jadi Play (Segitiga)
+        btn.style.background = "rgba(15, 23, 42, 0.7)"; // Kembalikan warna gelap transparan
+      }
+    });
+  }
+});
