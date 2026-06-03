@@ -106,28 +106,55 @@ if (waForm) {
     waForm.reset(); // Mengosongkan form kembali setelah dikirim
   });
 }
-// --- 7. LOGIKA TOMBOL PLAY / PAUSE VIDEO PORTOFOLIO ---
+
+// --- 7. LOGIKA TOMBOL PLAY / POP-UP LIGHTBOX PORTOFOLIO ---
 const controlButtons = document.querySelectorAll(".video-control-btn");
+const lightbox = document.getElementById("videoLightbox");
+const lightboxVideo = document.getElementById("lightboxVideo");
+const closeLightbox = document.getElementById("closeLightbox");
 
 controlButtons.forEach((btn) => {
-  // Ambil elemen video yang berada tepat sebelum posisi tombol ini
-  const video = btn.previousElementSibling;
+  // Mencari elemen video yang berada di dalam satu kotak .porto-image bersama tombol ini
+  const cardVideo = btn.previousElementSibling;
 
-  if (video && video.tagName === "VIDEO") {
+  if (cardVideo && cardVideo.tagName === "VIDEO") {
+    // Mengambil lokasi file video (.mp4) dari tag <source>
+    const videoSource = cardVideo.querySelector("source").getAttribute("src");
+
     btn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Mencegah klik tombol mengacaukan hover kartu
+      e.stopPropagation(); // Mencegah klik tombol mengacaukan hover kartu utama
 
-      // Jika video sedang berhenti/pause, maka putar videonya
-      if (video.paused) {
-        video.play();
-        btn.textContent = "⏸"; // Ubah ikon jadi Pause (Garis dua)
-        btn.style.background = "rgba(0, 180, 216, 0.8)"; // Beri warna cyan tanda video jalan
-      } else {
-        // Jika video sedang berjalan, maka hentikan videonya
-        video.pause();
-        btn.textContent = "▶"; // Kembalikan ikon jadi Play (Segitiga)
-        btn.style.background = "rgba(15, 23, 42, 0.7)"; // Kembalikan warna gelap transparan
-      }
+      // Masukkan file video kartu ke dalam video pop-up jendela melayang
+      lightboxVideo.src = videoSource;
+
+      // Tampilkan jendela melayang di layar
+      lightbox.classList.add("show");
+
+      // Putar videonya secara otomatis
+      lightboxVideo.play();
     });
   }
 });
+
+// Fungsi Menutup Jendela Melayang Video
+function tutupVideoLightbox() {
+  if (lightbox) {
+    lightbox.classList.remove("show");
+    lightboxVideo.pause(); // Hentikan video agar suaranya tidak bocor
+    lightboxVideo.src = ""; // Kosongkan data untuk menghemat RAM browser
+  }
+}
+
+// Klik tanda silang (X) untuk menutup
+if (closeLightbox) {
+  closeLightbox.addEventListener("click", tutupVideoLightbox);
+}
+
+// Klik di area buram luar video juga otomatis menutup pop-up
+if (lightbox) {
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      tutupVideoLightbox();
+    }
+  });
+}

@@ -459,14 +459,18 @@ header {
 }
 
 /* KUNCI UTAMA: Pembungkus Video/Gambar Terpadu */
+/* --- PERBAIKAN WADAH MEDIA --- */
 .porto-image {
   position: relative; /* Jangkar wajib untuk tombol absolut .video-control-btn */
   width: 100%;
   max-width: 400px;
-  min-height: 150px;
+
+  /* PERBAIKAN UTAMA: Gunakan height tetap (bukan min-height) agar semua kartu tingginya sepadan */
+  height: 150px; /* Ukuran standar yang ideal, bisa diganti ke 220px atau 280px sesuai selera */
+
   margin: 0 auto;
   overflow: hidden; /* Memotong luapan video/gambar saat membesar (zoom) */
-  border-radius: 12px 12px 0 0; /* Melengkung di atas, rata di bawah menempel teks */
+  border-radius: 20px 20px 0 0; /* Mengikuti lengkungan sudut kartu utama Anda */
   background-color: #f8fafc;
 }
 
@@ -474,9 +478,9 @@ header {
 .porto-image img,
 .porto-image .portfolio-video {
   width: 100%;
-  height: auto; /* Mengikuti tinggi proporsional file asli agar tidak terpotong */
+  height: 100%; /* Mengikuti tinggi proporsional file asli agar tidak terpotong */
   display: block;
-  object-fit: contain; /* Gambar/video utuh dan tidak ter-crop */
+  object-fit: cover; /* Gambar/video utuh dan tidak ter-crop */
   box-shadow: 0 15px 35px rgba(0, 86, 179, 0.1);
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Gerakan zoom kenyal halus */
 }
@@ -517,7 +521,97 @@ header {
   ); /* Berubah warna cyan tema agensi saat disentuh */
   transform: scale(1.1);
 }
+/* baruuuuuuuuuuuuuuuuuuuuuuuuuuu */
+/* Kontainer Utama Pop-up (Latar Gelap) */
+.video-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.85); /* Gelap transparan elegan */
+  backdrop-filter: blur(
+    8px
+  ); /* Efek blur blur estetik pada latar belakang web */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Wajib paling tinggi agar berada di atas navbar & elemen lain */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
 
+/* Saat Pop-up Aktif Muncul */
+.video-lightbox.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Kotak Konten Video */
+.lightbox-content {
+  position: relative;
+  width: 90%;
+  max-width: 800px; /* Lebar maksimal video saat membesar, sangat pas di mata */
+  background: #000000;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.video-lightbox.show .lightbox-content {
+  transform: scale(1); /* Efek membesar memantul halus saat terbuka */
+}
+
+/* Video di Dalam Pop-up */
+.lightbox-content video {
+  width: 100%;
+  max-height: 80vh; /* Membatasi tinggi agar tidak melebihi tinggi layar HP/Laptop */
+  display: block;
+  object-fit: contain; /* Video utuh tanpa terpotong sama sekali */
+}
+
+/* Tombol Silang Tutup (X) - Versi Perbaikan Mutlak Pojok Layar */
+.close-lightbox {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 10001;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  /* --- PERBAIKAN UNTUK MEMBUAT HURUF 'X' PAS DI TENGAH --- */
+  line-height: 0; /* KUNCI 1: Menghilangkan tinggi baris bawaan font */
+  padding-bottom: 4px; /* KUNCI 2: Mendorong huruf ke bawah sedikit (sesuaikan 2px - 5px jika dirasa kurang) */
+}
+
+.close-lightbox:hover {
+  background: #ef4444;
+}
+@media (max-width: 769px) {
+  .close-lightbox {
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.5rem;
+  }
+}
+
+/* .............................. */
 /* Menata Teks di bawah Gambar */
 .portofolio .card h3 {
   padding: 20px 20px 10px 20px;
